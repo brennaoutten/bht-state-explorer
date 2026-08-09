@@ -1,8 +1,8 @@
 
 const BHT_SHEET = {
-  publicationId: '2PACX-1vSjNReTl3eyYjiLbARfIUdaDmh5KbogSZD0xoCKHQRqn4REbLAS5EE7XPWuhsfwUA',
-  gid: '1208255361',
-  publishedPage: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSjNReTl3eyYjiLbARfIUdaDmh5KbogSZD0xoCKHQRqn4REbLAS5EE7XPWuhsfwUA/pubhtml?gid=1208255361&single=true'
+  spreadsheetId: '15tH6kmrn9PdjdKuITTO1SHYkTtFr_aIyPf0I79I25y0',
+  gid: '0',
+  sheetUrl: 'https://docs.google.com/spreadsheets/d/15tH6kmrn9PdjdKuITTO1SHYkTtFr_aIyPf0I79I25y0/edit?gid=0'
 };
 
 const STATE_CODES = {
@@ -48,7 +48,7 @@ function loadGviz(headers){
     };
     script.onerror=()=>{ if(!settled){settled=true;clearTimeout(timer);cleanup();reject(new Error('Could not reach the published Google Sheet.'));} };
     const tqx=encodeURIComponent(`out:json;responseHandler:${callback}`);
-    script.src=`https://docs.google.com/spreadsheets/d/e/${BHT_SHEET.publicationId}/gviz/tq?gid=${encodeURIComponent(BHT_SHEET.gid)}&headers=${headers}&tqx=${tqx}&_=${Date.now()}`;
+    script.src=`https://docs.google.com/spreadsheets/d/${BHT_SHEET.spreadsheetId}/gviz/tq?gid=${encodeURIComponent(BHT_SHEET.gid)}&headers=${headers}&tqx=${tqx}&_=${Date.now()}`;
     document.head.appendChild(script);
   });
 }
